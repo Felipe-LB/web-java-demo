@@ -14,6 +14,13 @@ public class ProductServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("text/html;charset=UTF-8");
 
+        String pathInfo = req.getPathInfo();
 
+
+        if (pathInfo == null && pathInfo.length() > 1) {
+            resp.getWriter().println("<h1>Você está vendo os detalhes do produto: " + pathInfo.substring(1) + " </h1>");
+        } else {
+            resp.getWriter().println("<h1>Produto não informado</h1>");
+        }
     }
 }
